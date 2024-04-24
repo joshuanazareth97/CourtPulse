@@ -1,0 +1,7 @@
+# ignore env files
+.env
+
+# ignore db files
+*.db.json
+
+.venv

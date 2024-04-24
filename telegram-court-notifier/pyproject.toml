@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "telegram-court-notifier"
+version = "1.0.0"
+description = ""
+authors = ["Joshua <joshuanazareth97@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+python-telegram-bot = "^21.1.1"
+requests = "^2.31.0"
+redis = "^5.0.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
