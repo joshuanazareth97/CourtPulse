@@ -1,7 +1,7 @@
 {
-  "name": "nextly-template",
+  "name": "court-pulse-landing-page",
   "version": "0.1.0",
-  "description": "Nextly Landing Page Template",
+  "description": "CourtPulse | Automated Case Tracking for Indian Courts",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -10,14 +10,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/web3templates/nextly-template"
+    "url": "https://github.com/joshuanazareth97/"
   },
   "keywords": [
-    "nextjs",
-    "tailwindcss",
-    "free"
+    "CourtPulse",
+    " legal case tracking",
+    " Delhi High Court",
+    " Supreme Court of India",
+    " legal notifications",
+    " Telegram bots",
+    " case management",
+    " Indian courts",
+    " lawyer tools",
+    " legal tech"
   ],
-  "author": "Surjith S M",
+  "author": "Joshua Nazareth",
   "license": "ISC",
   "dependencies": {
     "@emotion/css": "^11.10.6",
