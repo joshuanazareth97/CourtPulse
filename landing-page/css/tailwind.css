@@ -8,3 +8,10 @@
     @apply dark:bg-trueGray-900;
   }
 }
+
+body {
+  scroll-behavior: smooth;
+}
+* {
+  box-sizing: border-box;
+}

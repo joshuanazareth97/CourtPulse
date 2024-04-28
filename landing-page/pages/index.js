@@ -16,47 +16,46 @@ const Home = () => {
   return (
     <>
       <Head>
-        <title>CourtPulse</title>
+        <title>CourtPulse | Automated Case Tracking for Indian Courts</title>
         <meta
           name="description"
-          content="Nextly is a free landing page template built with next.js & Tailwind CSS"
+          content="CourtPulse revolutionizes legal case management with automated tracking for Delhi High Court and Supreme Court of India. Stay updated with real-time notifications directly on your Telegram. Sign up now to streamline your legal workflow and never miss a court update."
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <Navbar />
       <Hero />
       <SectionTitle
-        pretitle="Nextly Benefits"
-        title=" Why should you use this landing page"
-      >
-        Nextly is a free landing page & marketing website template for startups
-        and indie projects. Its built with Next.js & TailwindCSS. And its
-        completely open-source.
-      </SectionTitle>
+        id="features"
+        pretitle="Features at a Glance"
+        title="Learn more about CourtPulse"
+      />
       <Benefits data={benefitOne} />
-      <Benefits imgPos="right" data={benefitTwo} />
-      <SectionTitle
-        pretitle="Watch a video"
-        title="Learn how to fullfil your needs"
+      <Benefits id="benefits" imgPos="right" data={benefitTwo} />
+      {/* TODO: Add these back*/}
+      {/* <SectionTitle
+        pretitle="Watch it in action"
+        title="Experience the Future of Legal Case Tracking"
       >
-        This section is to highlight a promo or demo video of your product.
-        Analysts says a landing page with video has 3% more conversion rate. So,
-        don&apos;t forget to add one. Just like this.
-      </SectionTitle>
-      <Video />
-      <SectionTitle
+        Watch the seamless integration of case tracking and notifications
+        directly to your Telegram. See first-hand how our solution keeps you
+        connected and informed, no matter where you are, with all the ease of
+        sending a message.
+  </SectionTitle> */}
+      {/* <Video /> */}
+      {/* <SectionTitle
         pretitle="Testimonials"
         title="Here's what our customers said"
       >
         Testimonails is a great way to increase the brand trust and awareness.
         Use this section to highlight your popular customers.
       </SectionTitle>
-      <Testimonials />
-      <SectionTitle pretitle="FAQ" title="Frequently Asked Questions">
-        Answer your customers possible questions here, it will increase the
-        conversion rate as well as support or chat requests.
-      </SectionTitle>
+  <Testimonials /> */}
+      <SectionTitle
+        id="faq"
+        pretitle="FAQ"
+        title="Frequently Asked Questions"
+      />
       <Faq />
       <Cta />
       <SimpleFooter />
