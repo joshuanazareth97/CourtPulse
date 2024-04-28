@@ -1,7 +1,6 @@
 import React from "react";
 import Container from "./container";
-import { Disclosure } from "@headlessui/react";
-import { ChevronUpIcon } from "@heroicons/react/24/solid";
+import { SeeMore } from "./ui-components";
 
 const Faq = () => {
   return (
@@ -9,48 +8,40 @@ const Faq = () => {
       <div className="w-full max-w-2xl p-2 mx-auto rounded-2xl">
         {faqdata.map((item, index) => (
           <div key={item.question} className="mb-5">
-            <Disclosure>
-              {({ open }) => (
-                <>
-                  <Disclosure.Button className="flex items-center justify-between w-full px-4 py-4 text-lg text-left text-gray-800 rounded-lg bg-gray-50 hover:bg-gray-100 focus:outline-none focus-visible:ring focus-visible:ring-indigo-100 focus-visible:ring-opacity-75 dark:bg-trueGray-800 dark:text-gray-200">
-                    <span>{item.question}</span>
-                    <ChevronUpIcon
-                      className={`${
-                        open ? "transform rotate-180" : ""
-                      } w-5 h-5 text-indigo-500`}
-                    />
-                  </Disclosure.Button>
-                  <Disclosure.Panel className="px-4 pt-4 pb-2 text-gray-500 dark:text-gray-300">
-                    {item.answer}
-                  </Disclosure.Panel>
-                </>
-              )}
-            </Disclosure>
+            <SeeMore header={item.question}>{item.answer}</SeeMore>
           </div>
         ))}
       </div>
     </Container>
   );
-}
+};
 
 const faqdata = [
   {
-    question: "Is this template completely free to use?",
-    answer: "Yes, this template is completely free to use.",
-  },
-  {
-    question: "Can I use it in a commercial project?",
-    answer: "Yes, this you can.",
-  },
-  {
-    question: "What is your refund policy? ",
+    question: "What courts does CourtPulse currently support?",
     answer:
-      "If you're unhappy with your purchase for any reason, email us within 90 days and we'll refund you in full, no questions asked.",
+      "CourtPulse currently offers automated case tracking for the Delhi High Court and the Supreme Court of India. We are continuously working to expand our services to include more courts across India.",
   },
   {
-    question: "Do you offer technical support? ",
+    question: "How do I receive notifications about my cases?",
     answer:
-      "No, we don't offer technical support for free downloads. Please purchase a support plan to get 6 months of support.",
+      "After initially messaging the bot for any court, you can then send messages asking it to track a case on any given day. CourtPulse will send real-time notifications directly to your Telegram. These notifications will alert you whenever your cases are listed for hearing.",
+  },
+  {
+    question:
+      "Is there a limit to the number of cases I can track with CourtPulse?",
+    answer:
+      "No, CourtPulse allows you to track an unlimited number of cases across multiple courts. Our platform is designed to handle the needs of legal professionals managing numerous cases simultaneously.",
+  },
+  {
+    question: "How secure is my data with CourtPulse?",
+    answer:
+      "At CourtPulse, we prioritize the security of your data. Our platform uses Telegram's advanced E2E encryption standards to ensure that all your case details and personal information are securely stored and transmitted.",
+  },
+  {
+    question: "How can I sign up for CourtPulse?",
+    answer:
+      "Signing up for CourtPulse is easy! Just visit our website, click on the 'Get Started' button. Choose the bot for the court you want to monitor. This will take you to a Telegram chat window with our bot. Message the bot and follow the instructions that the bot messages you back.",
   },
 ];
 

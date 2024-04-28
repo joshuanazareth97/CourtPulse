@@ -1,14 +1,16 @@
 import React from "react";
 
-const Container = (props) => {
+const Container = ({ Component = "div", ...props }) => {
   return (
-    <div
-      className={`container p-8 mx-auto xl:px-0 ${
+    <Component
+      {...props}
+      className={`container p-8 mx-auto xl:px-4 ${
         props.className ? props.className : ""
-      }`}>
+      }`}
+    >
       {props.children}
-    </div>
+    </Component>
   );
-}
+};
 
 export default Container;

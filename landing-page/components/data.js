@@ -1,60 +1,59 @@
 import {
-  FaceSmileIcon,
-  ChartBarSquareIcon,
-  CursorArrowRaysIcon,
-  DevicePhoneMobileIcon,
-  AdjustmentsHorizontalIcon,
-  SunIcon,
+  ArrowTrendingDownIcon,
+  BellAlertIcon,
+  BoltIcon,
+  ChatBubbleLeftRightIcon,
+  ClockIcon,
+  InformationCircleIcon,
 } from "@heroicons/react/24/solid";
 
-import benefitOneImg from "../public/img/benefit-one.png";
-import benefitTwoImg from "../public/img/benefit-two.png";
+import featureImage from "../public/img/features.png";
+import benefitsImage from "../public/img/benefits.png";
 
 const benefitOne = {
-  title: "Highlight your benefits",
-  desc: "You can use this space to highlight your first benefit or a feature of your product. It can also contain an image or Illustration like in the example along with some bullet points.",
-  image: benefitOneImg,
+  title: "What does it do?",
+  desc: "Enhance your practice with CourtPulse's user-friendly interface and real-time updates.",
+  image: featureImage,
   bullets: [
     {
-      title: "Understand your customers",
-      desc: "Then explain the first point breifly in one or two lines.",
-      icon: <FaceSmileIcon />,
+      title: "Automated Case Tracking",
+      desc: "Automate your case monitoring with our specialized bots for each court. Set it once, and never miss that case listing.",
+      icon: <BoltIcon />,
     },
     {
-      title: "Improve acquisition",
-      desc: "Here you can add the next benefit point.",
-      icon: <ChartBarSquareIcon />,
+      title: "Instant Notifications",
+      desc: "Receive real-time alerts the moment your case status changes or gets listed, directly on your mobile device.",
+      icon: <BellAlertIcon />,
     },
     {
-      title: "Drive customer retention",
-      desc: "This will be your last bullet point in this section.",
-      icon: <CursorArrowRaysIcon />,
+      title: "Court-specific Bots",
+      desc: "Each court has its own dedicated bot, currently supporting the Delhi High Court and Supreme Court of India, tailored for specific needs and updates. More courts coming soon!",
+      icon: <ChatBubbleLeftRightIcon />,
     },
   ],
 };
 
 const benefitTwo = {
-  title: "Offer more benefits here",
-  desc: "You can use this same layout with a flip image to highlight your rest of the benefits of your product. It can also contain an image or Illustration as above section along with some bullet points.",
-  image: benefitTwoImg,
+  title: "How does it help?",
+  desc: "Maximize efficiency with CourtPulse. Spend less time on manual tracking and more on what matters.",
+  image: benefitsImage,
   bullets: [
     {
-      title: "Mobile Responsive Template",
-      desc: "Nextly is designed as a mobile first responsive template.",
-      icon: <DevicePhoneMobileIcon />,
+      title: "Save Time",
+      desc: "Automatic updates mean you spend less time tracking cases manually, giving you more time to allocate to other pressing tasks.",
+      icon: <ClockIcon />,
     },
     {
-      title: "Powered by Next.js & TailwindCSS",
-      desc: "This template is powered by latest technologies and tools.",
-      icon: <AdjustmentsHorizontalIcon />,
+      title: "Reduce Stress",
+      desc: "Keep your focus on case preparation and client interaction without the constant concern of missing important updates.",
+      icon: <ArrowTrendingDownIcon />,
     },
     {
-      title: "Dark & Light Mode",
-      desc: "Nextly comes with a zero-config light & dark mode. ",
-      icon: <SunIcon />,
+      title: "Stay Informed",
+      desc: "With real-time notifications, you’ll always be in the loop on the status of your cases.",
+      icon: <InformationCircleIcon />,
     },
   ],
 };
 
-
-export {benefitOne, benefitTwo};
+export { benefitOne, benefitTwo };
