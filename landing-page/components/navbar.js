@@ -1,10 +1,10 @@
 import { Disclosure } from "@headlessui/react";
 import Image from "next/image";
 import Link from "next/link";
-import { CALL_TO_ACTION, CTA_LINK } from "../constants/contentStrings";
-import ThemeChanger from "./DarkSwitch";
+import { CALL_TO_ACTION } from "../constants/contentStrings";
+import { bots } from "../constants/bots";
 import Container from "./container";
-import { Hamburger, LinkButton } from "./ui-components";
+import { Hamburger, Menu } from "./ui-components";
 
 const Navbar = () => {
   const navigation = ["Features", "Benefits", "FAQ"];
@@ -28,7 +28,7 @@ const Navbar = () => {
                         alt="N"
                         width="32"
                         height="32"
-                        className="w-8"
+                        className="w-8 h-auto"
                       />
                     </span>
                     <span>CourtPulse</span>
@@ -37,25 +37,23 @@ const Navbar = () => {
 
                 <Disclosure.Button
                   aria-label="Toggle Menu"
-                  className="px-2 py-1 ml-auto text-gray-500 rounded-md lg:hidden hover:text-midnight-500 focus:text-midnight-500 focus:bg-midnight-100 focus:outline-none dark:text-gray-300 dark:focus:bg-trueGray-700"
+                  className="px-2 py-1 ml-auto text-gray-500 rounded-md lg:hidden hover:text-midnight-500 focus:text-midnight-500 focus:bg-midnight-50 focus:outline-none dark:text-gray-300 dark:focus:bg-trueGray-700"
                 >
                   <Hamburger open={open} />
                 </Disclosure.Button>
 
-                <Disclosure.Panel className="flex flex-wrap w-full my-5 lg:hidden">
+                <Disclosure.Panel className="flex flex-wrap justify-center gap-2 w-full my-5 lg:hidden">
                   <>
                     {navigation.map((item, index) => (
                       <Link
                         key={index}
                         href={`#${item.toLowerCase()}`}
-                        className="w-full px-4 py-2 -ml-4 text-gray-500 rounded-md dark:text-gray-300 hover:text-midnight-500 focus:text-midnight-500 focus:bg-midnight-100 dark:focus:bg-gray-800 focus:outline-none"
+                        className="w-full px-4 py-2 -ml-4 flex-grow text-gray-500 rounded-md dark:text-gray-300 hover:text-midnight-500 focus:text-midnight-500 focus:bg-midnight-100 dark:focus:bg-gray-800 focus:outline-none"
                       >
                         {item}
                       </Link>
                     ))}
-                    <LinkButton variant="primary" href={CTA_LINK}>
-                      {CALL_TO_ACTION}
-                    </LinkButton>
+                    <Menu buttonLabel={CALL_TO_ACTION} itemList={bots} />
                   </>
                 </Disclosure.Panel>
               </div>
@@ -80,9 +78,7 @@ const Navbar = () => {
         </div>
 
         <div className="hidden mr-3 space-x-4 lg:flex nav__item">
-          <LinkButton variant="primary" href={CTA_LINK}>
-            {CALL_TO_ACTION}
-          </LinkButton>
+          <Menu buttonLabel={CALL_TO_ACTION} itemList={bots} />
         </div>
       </Container>
     </div>

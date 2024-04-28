@@ -1,7 +1,8 @@
 import React from "react";
+import { bots } from "../constants/bots";
+import { CALL_TO_ACTION } from "../constants/contentStrings";
 import Container from "./container";
-import { CALL_TO_ACTION, CTA_LINK } from "../constants/contentStrings";
-import { LinkButton } from "./ui-components";
+import { Menu } from "./ui-components";
 
 const Cta = () => {
   return (
@@ -17,9 +18,7 @@ const Cta = () => {
           </p>
         </div>
         <div className="flex-shrink-0 w-full text-center lg:w-auto">
-          <LinkButton variant="primary" href={CTA_LINK}>
-            {CALL_TO_ACTION}
-          </LinkButton>
+          <Menu buttonLabel={CALL_TO_ACTION} itemList={bots} />
         </div>
       </div>
     </Container>

@@ -1,12 +1,9 @@
 import Image from "next/image";
-import {
-  CALL_TO_ACTION,
-  CTA_LINK,
-  GITHUB_LINK,
-} from "../constants/contentStrings";
+import { bots } from "../constants/bots";
+import { CALL_TO_ACTION, GITHUB_LINK } from "../constants/contentStrings";
 import heroImg from "../public/img/hero.png";
-import { LinkButton } from "./ui-components";
 import Container from "./container";
+import { LinkButton, Menu } from "./ui-components";
 
 const Hero = () => {
   return (
@@ -28,9 +25,10 @@ const Hero = () => {
             </p>
 
             <div className="flex flex-col gap-4 items-center sm:flex-row">
-              <LinkButton variant="primary" href={CTA_LINK}>
+              <Menu buttonLabel={CALL_TO_ACTION} itemList={bots} />
+              {/* <LinkButton variant="primary" href={CTA_LINK}>
                 {CALL_TO_ACTION}
-              </LinkButton>
+  </LinkButton> */}
               <LinkButton
                 icon={
                   <svg
