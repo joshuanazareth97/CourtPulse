@@ -43,9 +43,11 @@
     "react-hook-form": "^7.43.9"
   },
   "devDependencies": {
+    "@types/node": "20.12.7",
     "autoprefixer": "^10.4.14",
     "eslint-config-prettier": "^8.8.0",
     "postcss": "^8.4.23",
-    "tailwindcss": "^3.3.1"
+    "tailwindcss": "^3.3.1",
+    "typescript": "5.4.5"
   }
 }
