@@ -6,7 +6,7 @@ import userOneImg from "../public/img/user1.jpg";
 import userTwoImg from "../public/img/user2.jpg";
 import userThreeImg from "../public/img/user3.jpg";
 
-const Testimonials  = () => {
+const Testimonials = () => {
   return (
     <Container>
       <div className="grid gap-10 lg:grid-cols-2 xl:grid-cols-3">
@@ -41,8 +41,8 @@ const Testimonials  = () => {
         <div className="">
           <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
             <p className="text-2xl leading-normal ">
-              This is an <Mark>awesome</Mark> landing page template I&apos;ve seen. I
-              would use this for anything.
+              This is an <Mark>awesome</Mark> landing page template I&apos;ve
+              seen. I would use this for anything.
             </p>
 
             <Avatar
@@ -55,7 +55,7 @@ const Testimonials  = () => {
       </div>
     </Container>
   );
-}
+};
 
 function Avatar(props) {
   return (
@@ -81,7 +81,7 @@ function Mark(props) {
   return (
     <>
       {" "}
-      <mark className="text-indigo-800 bg-indigo-100 rounded-md ring-indigo-100 ring-4 dark:ring-indigo-900 dark:bg-indigo-900 dark:text-indigo-200">
+      <mark className="text-midnight-800 bg-midnight-100 rounded-md ring-midnight-100 ring-4 dark:ring-midnight-900 dark:bg-midnight-900 dark:text-midnight-200">
         {props.children}
       </mark>{" "}
     </>

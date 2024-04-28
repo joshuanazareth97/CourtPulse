@@ -11,7 +11,7 @@ const SimpleFooter = () => {
         Made with ❤️ by{" "}
         <a
           href="https://joshuanaz.dev"
-          className="text-indigo-500 hover:underline"
+          className="text-midnight-500 hover:underline"
         >
           Joshua
         </a>

@@ -15,7 +15,7 @@ export default function Footer() {
               {" "}
               <Link
                 href="/"
-                className="flex items-center space-x-2 text-2xl font-medium text-indigo-500 dark:text-gray-100"
+                className="flex items-center space-x-2 text-2xl font-medium text-midnight-500 dark:text-gray-100"
               >
                 <Image
                   src="/img/logo.svg"
@@ -56,7 +56,7 @@ export default function Footer() {
                 <Link
                   key={index}
                   href="/"
-                  className="w-full px-4 py-2 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-trueGray-700"
+                  className="w-full px-4 py-2 text-gray-500 rounded-md dark:text-gray-300 hover:text-midnight-500 focus:text-midnight-500 focus:bg-midnight-100 focus:outline-none dark:focus:bg-trueGray-700"
                 >
                   {item}
                 </Link>
@@ -69,7 +69,7 @@ export default function Footer() {
                 <Link
                   key={index}
                   href="/"
-                  className="w-full px-4 py-2 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-trueGray-700"
+                  className="w-full px-4 py-2 text-gray-500 rounded-md dark:text-gray-300 hover:text-midnight-500 focus:text-midnight-500 focus:bg-midnight-100 focus:outline-none dark:focus:bg-trueGray-700"
                 >
                   {item}
                 </Link>

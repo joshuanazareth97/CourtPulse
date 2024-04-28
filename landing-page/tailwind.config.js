@@ -12,7 +12,14 @@ module.exports = {
     extend: {
       colors: {
         trueGray: colors.neutral,
-        midnight: "#00203e",
+        midnight: {
+          50: "#80909F",
+          100: "#0D2B48",
+          500: "#00203e",
+          600: "#0D2B48",
+          900: "#000306",
+          DEFAULT: "#00203e",
+        },
       },
     },
     fontFamily: {
