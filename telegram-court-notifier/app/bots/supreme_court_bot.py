@@ -12,3 +12,9 @@ class SupremeCourtBot(BaseBot):
         if not all(re.search("/d+", case) for case in case_nos):
           return False,  "Please provide a valid, comma-separated list of Case Numbers."
         return True, ""
+
+    def process_data(self, data):
+        return super().process_data(data)
+    
+    def format_message(self, case):
+        return super().format_message(case)
