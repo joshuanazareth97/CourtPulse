@@ -21,3 +21,10 @@ POLLING_INTERVAL = int(os.getenv("POLLING_INTERVAL", 10))
 
 # Debug mode
 DEBUG = True if ENVIRONMENT == "development" else False
+
+#  Validate env settings
+assert TELEGRAM_BOT_TOKEN, "TELEGRAM_BOT_TOKEN is required"
+assert REDIS_URL, "REDIS_URL is required"
+assert (
+    not DEBUG and ADMIN_PASSWORD != "testpass"
+), "Secure ADMIN_PASSWORD is required in production mode"
