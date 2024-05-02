@@ -6,13 +6,13 @@ from app.config import message_strings, settings
 
 
 class BaseBot(ABC):
-    def __init__(self, display_name: str):
+    def __init__(self, display_name: str, api_url: str):
         self.display_name = display_name
         self.name = f"{display_name.replace(' ', '')}Bot"
         self.bot_token = settings.TELEGRAM_BOT_TOKEN
         self.admin_password = settings.ADMIN_PASSWORD
         self.polling_interval = settings.POLLING_INTERVAL
-        self.api_url = settings.API_URL
+        self.api_url = api_url
         self.redis_client = redis.Redis.from_url(settings.REDIS_URL)
         self.failed_attempts = 0
         self.FAIL_THRESHOLD = 15
