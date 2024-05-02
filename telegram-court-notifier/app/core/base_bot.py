@@ -2,11 +2,13 @@ import redis
 from abc import ABC, abstractmethod
 
 import requests
-from config import message_strings, settings
+from app.config import message_strings, settings
 
 
 class BaseBot(ABC):
-    def __init__(self):
+    def __init__(self, display_name: str):
+        self.display_name = display_name
+        self.name = f"{display_name.replace(' ', '')}Bot"
         self.bot_token = settings.TELEGRAM_BOT_TOKEN
         self.admin_password = settings.ADMIN_PASSWORD
         self.polling_interval = settings.POLLING_INTERVAL
@@ -75,6 +77,7 @@ class BaseBot(ABC):
                     )
         else:
             self.failed_attempts = 0
+            print("Data Retrieved: ", response.status_code)
             return response
 
     @abstractmethod
@@ -82,12 +85,13 @@ class BaseBot(ABC):
         pass
 
     @abstractmethod
-    def format_message(self, case):
+    def format_message(self, case_no: str, court_no: str, case):
         pass
 
     async def start(self, update, context):
         await context.bot.send_message(
-            chat_id=update.effective_chat.id, text=message_strings.WELCOME_MESSAGE
+            chat_id=update.effective_chat.id,
+            text=(message_strings.WELCOME_MESSAGE % self.display_name),
         )
 
     async def clear(self, update, context):
@@ -111,7 +115,7 @@ class BaseBot(ABC):
         if not self.stop_polling:
             data = self.poll_data_source(context.bot)
             if data:
-                processed_cases = self.process_data(data)
+                processed_cases = self.process_data(data.json())
                 if processed_cases:
                     await self.notify_users(processed_cases, context)
 
@@ -121,9 +125,11 @@ class BaseBot(ABC):
             case_no = case.get("item_no")
             if court_name and case_no:
                 key = f"{court_name}:{case_no}"
+                message = self.format_message(
+                    court_no=court_name, case_no=case_no, case=case
+                )
                 chat_ids = self.redis_client.smembers(key)
                 for chat_id in chat_ids:
-                    message = self.format_message(case)
                     await context.bot.send_message(
                         chat_id=chat_id.decode("utf-8"), text=message
                     )
