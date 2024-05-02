@@ -1,10 +1,12 @@
 import re
 from app.core import BaseBot
 
+DHC_API = ""
+
 
 class DelhiHighCourtBot(BaseBot):
     def __init__(self):
-        super().__init__("Delhi High Court")
+        super().__init__("Delhi High Court", DHC_API)
 
     def validate_input(self, court_no, case_nos):
         if not court_no or not (court_no.startswith("C") or court_no.startswith("RC")):

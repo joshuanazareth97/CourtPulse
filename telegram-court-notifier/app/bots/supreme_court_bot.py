@@ -1,10 +1,12 @@
 import re
 from app.core import BaseBot
 
+SC_API = "https://registry.sci.gov.in/ca_iscdb/index.php?courtListCsv=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,21,22&request=display_full&requestType=ajax"
+
 
 class SupremeCourtBot(BaseBot):
     def __init__(self):
-        super().__init__("Supreme Court")
+        super().__init__("Supreme Court", SC_API)
 
     def validate_input(self, court_no, case_nos):
         if not court_no or not (court_no.startswith("C") or court_no.startswith("RC")):
