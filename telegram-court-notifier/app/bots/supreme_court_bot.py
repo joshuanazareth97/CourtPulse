@@ -1,5 +1,6 @@
 import re
 from app.core import BaseBot
+from requests.models import Response
 
 SC_API = "https://registry.sci.gov.in/ca_iscdb/index.php?courtListCsv=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,21,22&request=display_full&requestType=ajax"
 
@@ -9,17 +10,18 @@ class SupremeCourtBot(BaseBot):
         super().__init__("Supreme Court", SC_API)
 
     def validate_input(self, court_no, case_nos):
-        if not court_no or not (court_no.startswith("C") or court_no.startswith("RC")):
+        if not court_no or not re.search("^(?:C|RC)\d+$", court_no):
             return False, "Please provide a valid Court Number."
         all_cases_valid = all(bool(re.search("\d+", case)) for case in case_nos)
         if not all_cases_valid:
             return (
                 False,
-                "Please provide a valid, comma-separated list of Case Numbers.",
+                "Please provide a valid list of Case Numbers.",
             )
         return True, ""
 
-    def process_data(self, data):
+    def process_data(self, response: Response):
+        data = response.json()
         court_list = data["listedItemDetails"]
 
         case_list = []
