@@ -1,12 +1,18 @@
 SHELL := /bin/bash
 
 # Param defaults
-IMAGE_NAME ?= $(notdir $(CURDIR))
+# set image name to output of bin/get_package.sh
+IMAGE_NAME ?=	$(shell $(CURDIR)/bin/get_package_name)
 REGISTRY ?= ghcr.io
 NAMESPACE ?= joshuanazareth97
-VERSION_TYPE ?= patch
 SNAPSHOT ?= true
 CHANGELOG_FILE := CHANGELOG.md
+
+ifeq ($(SNAPSHOT), true)
+ VERSION_TYPE ?= release
+else
+ VERSION_TYPE ?= patch
+endif
 
 # Helper to check variables and display current/default value in the prompt
 define check_defined
@@ -49,7 +55,7 @@ build: update-changelog
 	@docker build --build-arg VERSION=$$(poetry version -s) -t $(REGISTRY)/$(NAMESPACE)/$(IMAGE_NAME):$$(poetry version -s) .
 
 # Push the Docker image to a registry
-push: build
+push: build login
 	@echo "Checking if image exists..."
 	@ docker manifest inspect $(REGISTRY)/$(NAMESPACE)/$(IMAGE_NAME):$$(poetry version -s) > /dev/null 2>&1 && \
 		echo "Image already exists, not pushing." || \
@@ -60,15 +66,17 @@ push: build
 # Log in to the Docker registry
 login: 
 	@echo "Logging into Docker registry..."
-	@docker login $(REGISTRY) -u $(NAMESPACE) -p 
+	@docker login $(REGISTRY) -u $(NAMESPACE) -p $(AUTH_TOKEN) 
 
 # Clean up local Docker images
 clean:
 	@docker rmi $(REGISTRY)/$(NAMESPACE)/$(IMAGE_NAME):$$(poetry version -s)
 
+run:
+	bin/run.sh
 
 # Phony targets
-.PHONY: build push login clean update-changelog bump-version check-params
+.PHONY: run build push login clean update-changelog bump-version check-params
 
 # Default target
 all: push
