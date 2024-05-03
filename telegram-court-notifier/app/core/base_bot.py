@@ -20,7 +20,7 @@ class BaseBot(ABC):
         self.stop_polling = False
 
     @abstractmethod
-    def validate_input(self, court_no, case_nos):
+    def validate_input(self, court_no: str, case_nos: list[str]):
         """
         Validates the input data. Should return a tuple (bool, message)
         where bool indicates if validation passed, and message is an error or success message.
@@ -81,7 +81,7 @@ class BaseBot(ABC):
             return response
 
     @abstractmethod
-    def process_data(self, data):
+    def process_data(self, data: requests.models.Response):
         pass
 
     @abstractmethod
@@ -115,21 +115,28 @@ class BaseBot(ABC):
         if not self.stop_polling:
             data = self.poll_data_source(context.bot)
             if data:
-                processed_cases = self.process_data(data.json())
+                processed_cases = self.process_data(data)
                 if processed_cases:
                     await self.notify_users(processed_cases, context)
 
     async def notify_users(self, cases, context):
         for case in cases:
             court_name = case.get("court_name")
-            case_no = case.get("item_no")
+            case_no = case.get("case_no")
             if court_name and case_no:
                 key = f"{court_name}:{case_no}"
                 message = self.format_message(
                     court_no=court_name, case_no=case_no, case=case
                 )
                 chat_ids = self.redis_client.smembers(key)
+                notified = []
                 for chat_id in chat_ids:
-                    await context.bot.send_message(
-                        chat_id=chat_id.decode("utf-8"), text=message
-                    )
+                    try:
+                        await context.bot.send_message(
+                            chat_id=chat_id.decode("utf-8"), text=message
+                        )
+                        notified.append(chat_id)
+                    except Exception as e:
+                        print(f"Error sending message to {chat_id}: {e}")
+                if notified:
+                    self.redis_client.srem(key, *notified)
